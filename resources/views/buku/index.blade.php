@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Buku</title>
 </head>
 <body>
     <table class="table table-striped">
@@ -26,8 +26,16 @@
                     <td>{{ "Rp ".number_format($buku->harga, 2, ',', '.')}}</td>
                     <td>{{ $buku->tgl_terbit->format('d/m/Y') }}</td>
                 </tr>
-            @endforeach
         </tbody>        
     </table>
+    <td>
+        <form action="{{ route('buku.destroy', $buku->id)}}" method="post">
+            @csrf
+            <buutton onClick="return confirm('Yakin mau dihapus?')">Hapus</buutton>
+        </form>    
+    </td>
+    <p align="right"><a href= "{{ route ('buku.create') }}"> Tambah Buku </a></p>
+    @endforeach
+
 </body>
 </html>

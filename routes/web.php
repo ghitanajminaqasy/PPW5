@@ -14,8 +14,11 @@ use App\Http\Controllers\BukuController;
 |
 */
 
-Route::get('/buku',[BukuController::class,'index'] );
-
-Route::get('/', function () {
+// Route::get('/buku', 'BukuController@index');
+Route::get('/',function (){
     return view('welcome');
 });
+Route::get('/buku', [BukuController::class,'index']);
+Route::get('/buku/create', [BukuController::class, 'create'])->name('buku.create');
+Route::post('/buku', [BukuController::class,'store'])->name('buku.store');
+Route::post('/buku/delete/{id}', 'BukuController@destroy')->name('buku.destroy');
